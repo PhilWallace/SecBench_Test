@@ -8,6 +8,17 @@ SecBench official website: *[link](https://secbench.org/)*.
 SecBench Technical Paper: *[link](https://arxiv.org/abs/2412.20787)*.
 
 
+
+## Table of Contents
+
+- [SecBench Design](#secbench-design)
+- [Data Example](#data-example)
+- [Benchmarking](#benchmarking)
+- [Released Data](#released-data)
+- [Citation](#citation)
+
+
+
 ## SecBench Design
 
 
