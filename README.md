@@ -31,11 +31,14 @@ The following figure shows the overview of the SecBench design: it is a comprehe
 ## Data Example
 
 
+### MCQ Example
+
 Following is one MCQ example, labeled in the domain of *Security Management* and the level of *Logical Reasoning*. For MCQs, A blank is left in question stem, and there are four choices given in *answers* for the tested LLM to select, with *label* referring to the correct choice(s) among the four.
 
 ![image info](./figs/example_MCQ.png)
 
 
+### SAQ Example
 
 Following is one SAQ example, labeled in the domain of *Data Security* and the level of *Knowledge Retention*. For SAQs, there is no choice given for selection, and the tested LLM is expected to construct the answer from scratch. in SAQ, *answer* refers to the correct answer of the question stem, which will be used to evaluate LLM's output.
 
