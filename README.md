@@ -18,10 +18,7 @@ The following figure shows the overview of the SecBench design: it is a comprehe
 ![image info](./figs/SecBench_design.png)
 
 
-- **Multi-Level** : We devise the capability of LLM in cybersecurity into two different levels: Knowledge Retention - KR and Logical Reasoning - LR. Among the two, knowledge retention examines the LLM's ability to retain existing knowledge. The content of such questions is relatively straightforward and does not involve complex reasoning. On the other hand, logical reasoning assesses the LLM's ability to infer the correct answer based on the given information. The difficulty of these questions is relatively higher and better demonstrates the model's capability to handle complex problems.
-
-
-- **Multi-Level** : We devise the capability of LLM in cybersecurity into two different levels: Knowledge Retention - KR and Logical Reasoning - LR. Among the two, knowledge retention examines the LLM's ability to retain existing knowledge. The content of such questions is relatively straightforward and does not involve complex reasoning. On the other hand, logical reasoning assesses the LLM's ability to infer the correct answer based on the given information. The difficulty of these questions is relatively higher and better demonstrates the model's capability to handle complex problems.
+- **Multi-Level** : We devise the capability of LLM in cybersecurity into two different levels: **Knowledge Retention - KR** and **Logical Reasoning - LR**. Among the two, knowledge retention examines the LLM's ability to retain existing knowledge. The content of such questions is relatively straightforward and does not involve complex reasoning. On the other hand, logical reasoning assesses the LLM's ability to infer the correct answer based on the given information. The difficulty of these questions is relatively higher and better demonstrates the model's capability to handle complex problems.
 
 
 - **Multi-Language** : SecBench includes questions of two mainstream languages - Chinese and English, to present a more comprehensive benchmark.
@@ -56,24 +53,22 @@ Based on SecBench, we conducted extensive benchmarking on 16 SOTA LLMs, includin
 
 ### MCQ
 
-
+![image info](./figs/benchmarking_MCQ.png)
 
 ### SAQ
 
- - **fuzzing** : The improved fuzzing framework, refined with the range restriction mutation, and the improved fitness score constructed from new metrics.
 
- - **refined_mpc_controller** : The refined controller code, which outperforms the original controller after we fixed identified bugs.
-
- - **oracle_assessment** : How to assess the controller performance based on the proposed four metrics.
-
- - **VLM_Results** : The results produced by GPT-4o VLM in our CoT based bug analysis.
-
+![image info](./figs/benchmarking_SAQ.png)
 
 
 
 ## Released Data
 
+We release a total of 3,000 questions from SecBench (under the **data** folder), including:
 
+ - MCQs_2730.jsonl : A total of 2,730 MCQs.
+
+ - SAQs_270.jsonl : A total of 270 SAQs.
 
 
 
