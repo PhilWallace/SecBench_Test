@@ -51,12 +51,11 @@ Following is one SAQ example, labeled in the domain of *Data Security* and the l
 Based on SecBench, we conducted extensive benchmarking on 16 SOTA LLMs, including the GPT series and competitive open-source ones.
 
 
-### MCQ
+### MCQ Correctness
 
 ![image info](./figs/benchmarking_MCQ.png)
 
-### SAQ
-
+### SAQ Scores
 
 ![image info](./figs/benchmarking_SAQ.png)
 
@@ -64,11 +63,11 @@ Based on SecBench, we conducted extensive benchmarking on 16 SOTA LLMs, includin
 
 ## Released Data
 
-We release a total of 3,000 questions from SecBench (under the **data** folder), including:
+We release a total of 3,000 questions from SecBench (under the [data](./data/) folder), including:
 
- - MCQs_2730.jsonl : A total of 2,730 MCQs.
+ - [MCQs_2730.jsonl](./data/MCQs_2730.jsonl) : A total of 2,730 MCQs.
 
- - SAQs_270.jsonl : A total of 270 SAQs.
+ - [SAQs_270.jsonl](./data/SAQs_270.jsonl) : A total of 270 SAQs.
 
 
 
@@ -81,6 +80,5 @@ We release a total of 3,000 questions from SecBench (under the **data** folder),
   author={Jing, Pengfei and Tang, Mengyun and Shi, Xiaorong and Zheng, Xing and Nie, Sen and Wu, Shi and Yang, Yong and Luo, Xiapu},
   journal={arXiv preprint arXiv:2412.20787},
   year={2024}
-}3}
 }
 ```
