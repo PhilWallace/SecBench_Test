@@ -11,25 +11,54 @@ SecBench Technical Paper: *[link](https://arxiv.org/abs/2412.20787)*.
 ## SecBench Design
 
 
+The following figure shows the overview of the SecBench design: it is a comprehensive benchmarking dataset aiming to benchmark LLM's capability in cybersecurity from *Multi-Level*, *Multi-Language*, *Multi-Form*, *Multi-Domain*.
+
+
+
+![image info](./figs/SecBench_design.png)
+
+
+- **Multi-Level** : We devise the capability of LLM in cybersecurity into two different levels: Knowledge Retention - KR and Logical Reasoning - LR. Among the two, knowledge retention examines the LLM's ability to retain existing knowledge. The content of such questions is relatively straightforward and does not involve complex reasoning. On the other hand, logical reasoning assesses the LLM's ability to infer the correct answer based on the given information. The difficulty of these questions is relatively higher and better demonstrates the model's capability to handle complex problems.
+
+
+- **Multi-Level** : We devise the capability of LLM in cybersecurity into two different levels: Knowledge Retention - KR and Logical Reasoning - LR. Among the two, knowledge retention examines the LLM's ability to retain existing knowledge. The content of such questions is relatively straightforward and does not involve complex reasoning. On the other hand, logical reasoning assesses the LLM's ability to infer the correct answer based on the given information. The difficulty of these questions is relatively higher and better demonstrates the model's capability to handle complex problems.
+
+
+- **Multi-Language** : SecBench includes questions of two mainstream languages - Chinese and English, to present a more comprehensive benchmark.
+
+- **Multi-Form** : Unlike previous works that constructed only multiple-choice questions (MCQs), SecBench also includes short-answer questions (SAQs) to present a more comprehensive evaluation. This is because SAQs tend to be more challenging than MCQs: for MCQs, the LLM only needs to choose the correct answer(s) from the given options, while for SAQs, the LLM is prompted to construct its own answer based on the given question. As a result, SAQs can evaluate the capability of the LLM at a higher level, especially considering the inherent limitations of LLMs (e.g., hallucinations and repetition).
+
+
+- **Multi-Domain** : The questions in SecBench consist of 9 different domains, including **D1. Security Management**, **D2. Data Security**, **D3. Network and Infrastructure Security**, **D4. Security Standards and Regulations**, **D5. Application Security**, **D6. Identity and Access Control**, **D7. Fundamental Software and Hardware and Technology**, **D8. Endpoint and Host Security**, **D9. Cloud Security**. Particularly, the above domains were devised from several rounds of brainstorming and revision, which were expected to cover most (if not all) related sub-domains in cybersecurity. Note that we do not expect these domains to be \emph{orthogonal}, and it is possible that one question can be reasonably labeled into different domains. In our dataset, one question is assigned only one most-related domain label from D1 to D9.
+
+## Data Example
+
+
+Following is one MCQ example, labeled in the domain of *Security Management* and the level of *Logical Reasoning*. For MCQs, A blank is left in question stem, and there are four choices given in *answers* for the tested LLM to select, with *label* referring to the correct choice(s) among the four.
+
+![image info](./figs/example_MCQ.png)
+
+
+
+Following is one SAQ example, labeled in the domain of *Data Security* and the level of *Knowledge Retention*. For SAQs, there is no choice given for selection, and the tested LLM is expected to construct the answer from scratch. in SAQ, *answer* refers to the correct answer of the question stem, which will be used to evaluate LLM's output.
+
+
+
+![image info](./figs/example_SAQ.png)
 
 
 
 
 ## Benchmarking
 
+Based on SecBench, we conducted extensive benchmarking on 16 SOTA LLMs, including the GPT series and competitive open-source ones.
 
-| #   | Model             | Creator   | Access    | Submission Date | System Security | Application Security | PenTest | Memory Safety | Network Security | Web Security | Vulnerability | Software Security | Cryptography | Overall |
-|-----|-------------------|-----------|-----------|-----------------|-----------------|----------------------|---------|---------------|------------------|--------------|---------------|-------------------|--------------|---------|
-| 1   | gpt-4-turbo       | OpenAI    | API, Web  | 2023-12-20      | 73.61           | 75.25                | 80.00   | 70.83         | 75.65            | 82.15        | 76.05         | 73.28             | 64.29        | 79.07   |
-| 2   | gpt-3.5-turbo     | OpenAI    | API, Web  | 2023-12-20      | 59.15           | 57.18                | 72.00   | 43.75         | 60.87            | 63.00        | 60.18         | 58.19             | 35.71        | 62.09   |
-| 3   | Yi-6B             | 01-AI     | Weight    | 2023-12-20      | 50.61           | 48.89                | 69.26   | 35.42         | 56.52            | 54.98        | 49.40         | 45.69             | 35.71        | 53.57   |
-| 4   | Orca-2-7b         | Microsoft | Weight    | 2023-12-20      | 46.76           | 47.03                | 60.84   | 31.25         | 49.13            | 55.63        | 50.00         | 52.16             | 14.29        | 51.60   |
-| 5   | Mistral-7B-v0.1   | Mistralai | Weight    | 2023-12-20      | 40.19           | 38.37                | 53.47   | 33.33         | 36.52            | 46.57        | 42.22         | 43.10             | 28.57        | 43.65   |
-| 6   | chatglm3-6b-base  | THUDM     | Weight    | 2023-12-20      | 39.72           | 37.25                | 57.47   | 31.25         | 43.04            | 41.14        | 37.43         | 39.66             | 28.57        | 41.58   |
-| 7   | Aquila2-7B        | BAAI      | Weight    | 2023-12-20      | 34.84           | 36.01                | 47.16   | 22.92         | 32.17            | 42.04        | 38.02         | 36.21             | 7.14         | 38.29   |
-| 8   | Qwen-7B           | Alibaba   | Weight    | 2023-12-20      | 28.92           | 28.84                | 41.47   | 18.75         | 29.57            | 33.25        | 31.74         | 30.17             | 14.29        | 31.37   |
-| 9   | internlm-7b       | Sensetime | Weight    | 2023-12-20      | 25.92           | 25.87                | 36.21   | 25.00         | 27.83            | 32.86        | 29.34         | 34.05             | 7.14         | 30.29   |
-| 10  | Llama-2-7b-hf     | MetaAI    | Weight    | 2023-12-20      | 20.94           | 18.69                | 26.11   | 16.67         | 14.35            | 22.77        | 21.56         | 20.26             | 21.43        | 22.15   |
+
+### MCQ
+
+
+
+### SAQ
 
  - **fuzzing** : The improved fuzzing framework, refined with the range restriction mutation, and the improved fitness score constructed from new metrics.
 
@@ -38,6 +67,12 @@ SecBench Technical Paper: *[link](https://arxiv.org/abs/2412.20787)*.
  - **oracle_assessment** : How to assess the controller performance based on the proposed four metrics.
 
  - **VLM_Results** : The results produced by GPT-4o VLM in our CoT based bug analysis.
+
+
+
+
+## Released Data
+
 
 
 
